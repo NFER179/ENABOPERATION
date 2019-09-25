@@ -48,13 +48,14 @@ public class LoginCheck extends HttpServlet {
 		String uname = request.getParameter("uName");
 		String upass = request.getParameter("uPass");
 		
+		/* Esta clase deberia estar en un jar aparte. */
 		UserLog uLog = new UserLog(uname, upass);
 		
 		if(UserLogModel.logIn(uLog)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("usr", uLog);
-			/**/
-			try {
+			/* Trata la conexion a la base de datos. */
+			/*try {
 				Connection con = DatabaseConnection.initializeDatabase();
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery("SELECT * FROM fnd_users_tbl");
@@ -64,10 +65,12 @@ public class LoginCheck extends HttpServlet {
 				con.close();
 			} catch(Exception e) {
 				e.printStackTrace();
-			}
-			System.out.println("---------test");
-			/**/
-			response.sendRedirect("schema/main/mainmenu.jsp");
+				System.out.println("Problemas en la conexión con la base de datos.");
+			}*/
+			/* Necesita parte del Log. (jar aparte) */
+			System.out.println("");
+			/* Por mas que no conecte a la base de datos pasa a la pagina principal. */
+			response.sendRedirect("schema/main/main.jsp");
 		} else {
 			response.sendRedirect("schema/errorLogin.jsp");
 		}
