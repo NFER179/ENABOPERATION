@@ -9,6 +9,15 @@
 		<div>
 			<b>Configuration</b>
 		</div>
+		<div>
+			<details>
+				<ul>
+					<li>
+						<input type="submit" id="exit" value="[->" />
+					</li>
+				</ul>
+			</details>
+		</div>
 	</div>
 	<!-- <div id="divMenu"> -->
 	<div class="menu" tabindex="0" >
@@ -47,6 +56,6 @@
 	</div>
 	<input type="button" value="button-test"/>
 </div>
-<link type="text/css" rel="stylesheet" href="../../css/head-menu.css">
-<link type="text/css" rel="stylesheet" href="../../css/smartphone-menu-trigger.css">
-<link type="text/css" rel="stylesheet" href="../../css/commons.css">
+<link type="text/css" rel="stylesheet" href="../css/head-menu.css">
+<link type="text/css" rel="stylesheet" href="../css/smartphone-menu-trigger.css">
+<link type="text/css" rel="stylesheet" href="../css/commons.css">

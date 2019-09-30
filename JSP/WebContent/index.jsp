@@ -21,14 +21,12 @@
 			}
 			*/
 			
-	
-			String mensaje = "lala";
 			//DataBaseManager dbm = new DataBaseManager(mensaje);
 			if (true) {
 				response.sendRedirect("schema/log.jsp");
 			} else {
 				response.sendRedirect("schema/common/database/dbsetting.jsp");
-				out.write("<h1>" + mensaje + "</h1>");
+				out.write("<h1>Lero Lero</h1>");
 			}
 		%>
 	</body>
