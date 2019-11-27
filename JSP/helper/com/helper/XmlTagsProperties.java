@@ -9,6 +9,6 @@ public class XmlTagsProperties {
 	
 	public XmlTagsProperties() {
 		//this._map = map;
-		this._xmltp = null;
+		this._xmltp = null ;
 	}
 }
