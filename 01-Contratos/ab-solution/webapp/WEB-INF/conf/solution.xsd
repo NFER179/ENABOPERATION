@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<!-- definition of simple element -->
+	<xsd:element name="name" type="xsd:string" />
+	<xsd:element name="engine" type="xsd:string" />
+	<xsd:element name="url" type="xsd:string" />
+	<xsd:element name="databasename" type="xsd:string" />
+	<xsd:element name="user" type="xsd:string" />
+	<xsd:element name="password" type="xsd:string" />
+	
+	<!-- definition of attribute -->
+	<xsd:attribute name="active" type="xsd:boolean" />
+	
+	<!-- definition of complex -->
+	<xsd:complexType name="databasecomplextype">
+		<xsd:sequence>
+			<xsd:element ref="name" />
+			<xsd:element ref="engine" />
+			<xsd:element ref="url" />
+			<xsd:element ref="databasename" />
+			<xsd:element ref="user" />
+			<xsd:element ref="password" />
+		</xsd:sequence>
+		<xsd:attribute ref="active" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="databasescomplextype">
+		<xsd:sequence>
+			<xsd:element name="database" maxOccurs="unbounded" type="databasecomplextype" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="databases" type="databasescomplextype" />
+
+</xsd:schema>
