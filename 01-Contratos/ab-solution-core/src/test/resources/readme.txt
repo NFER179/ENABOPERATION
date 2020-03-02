@@ -1,0 +1,1 @@
+Resourse to java testing.
