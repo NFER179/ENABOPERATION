@@ -9,7 +9,7 @@
 		<!-- <title>Solution</title>
 		<link rel="icon" href="<% out.write("varios/logo.png"); %>" > -->
 		<link rel="stylesheet" href="index.css">
-		<jsp:include page="varios/title.jsp"></jsp:include>
+		<jsp:include page="solution-structure/varios/title.jsp"></jsp:include>
 	</head>
 	<body>
 		<form action="LogIn" method="post">

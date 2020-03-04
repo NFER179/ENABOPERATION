@@ -1,3 +1,4 @@
+/* old object */
 package init;
 
 import javax.servlet.*;
