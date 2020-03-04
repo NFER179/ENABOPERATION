@@ -1,4 +1,4 @@
 #files ignorer.
-.setting
+.settings
 *.log
 *.class
