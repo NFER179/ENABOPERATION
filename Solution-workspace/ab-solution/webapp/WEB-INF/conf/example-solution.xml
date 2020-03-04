@@ -3,14 +3,22 @@
 <solution-properties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:noNamespaceSchemaLocation="solution.xsd">
 	<log logType="info">
-		<url>C:\Users\nfernandez\Desktop\Toc\02-Proyectos\01-Customs\01-Contratos\</url>
+		<url>Path</url>
 	</log>
 	<databases>
 		<database active="true">
 			<name>AbSolution sqlite</name>
 			<engine>sqlite</engine>
-			<url>C:\Users\nfernandez\Desktop\Toc\02-Proyectos\01-Customs\01-Contratos\02-DataBase\databases</url>
-			<databasename>AbSolution.db</databasename>
+			<url>path</url>
+			<databasename>database.sdb</databasename>
+			<user></user>
+			<password></password>
+		</database>
+		<database active="false">
+			<name>AbSolution sql server</name>
+			<engine>sqlServer</engine>
+			<url></url>
+			<databasename></databasename>
 			<user></user>
 			<password></password>
 		</database>
