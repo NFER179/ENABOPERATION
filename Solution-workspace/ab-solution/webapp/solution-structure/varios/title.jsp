@@ -6,7 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 		<title>Solution</title>
-		<link  rel="icon" href="varios/logo.png"></link>
+		<link  rel="icon" href="solution-structure/varios/logo.png"></link>
 	</head>
 	<body>
 

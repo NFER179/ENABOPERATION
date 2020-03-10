@@ -4,6 +4,8 @@ import java.io.File;
 
 import javax.servlet.http.HttpServlet;
 
+import com.app.manager.LogMng;
+
 @SuppressWarnings("serial")
 public class AppStartController extends HttpServlet {
 	
@@ -28,6 +30,6 @@ public class AppStartController extends HttpServlet {
 		/* test */
 		
 		ac.setPathRoot(getServletContext().getRealPath(File.separator)); 
-		System.out.println("[AppStartController] -> End StartController");
+		this.ac.writeLog(this, LogMng.INFO, "End StartController");
 	}
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.app.manager.LogMng;
 import com.app.model.dto.UserLogDTO;
 
 import solution.constants.JspTagNameConstant;
@@ -57,31 +58,31 @@ public class LogIn extends HttpServlet {
 		//doGet(request, response);
 		//doTrace(request, response);
 		
-		System.out.println("[LogIn] -> Start log in");
 		HttpSession session = request.getSession();
 		AppSession appSession;
-		AppController app;
+		AppController app = AppController.getInstance();
 		UserLogDTO userLog;
 		String database, user, pass;
+		
+		app.writeLog(this, LogMng.INFO, "Start log in");
 		
 		database = request.getParameter(JspTagNameConstant.DATABASEID.var());
 		user = request.getParameter(JspTagNameConstant.USERID.var());
 		pass = request.getParameter(JspTagNameConstant.PASSWROD.var());
 		
-		System.out.println("[Login] - Set vars " + database);
+		app.writeLog(this, LogMng.INFO, "Set vars " + database);
 		
-		app = AppController.getInstance();
 		app.setDataBase(database);
 		userLog = new UserLogDTO(user, pass);
 		
 		appSession = new AppSession(app, userLog);
 		if (appSession.logInOk()) {
 			session.setAttribute(VarSessionConst.APPSESSION.var(), appSession);
-			System.out.println("Usuario existe");
+			response.sendRedirect("solution-structure/commons/main.jsp");
 		} else {
-			System.out.println("Usuario no existe");
+			app.writeLog(this, LogMng.INFO, "Usuario no existe");
 		}
-		System.out.println("[LogIn] -> End log in");
+		app.writeLog(this, LogMng.INFO, "End log in");
 	}
 
 	/**

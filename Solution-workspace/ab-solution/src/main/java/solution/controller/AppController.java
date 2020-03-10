@@ -1,8 +1,11 @@
 package solution.controller;
 
 import com.app.controllers.MainController;
+import com.app.manager.LogMng;
 import com.app.model.UserLogModel;
 import com.app.model.dto.UserLogDTO;
+
+import solution.login.LogIn;
 
 public class AppController {
 	
@@ -13,8 +16,8 @@ public class AppController {
 	
 	private AppController() {
 		this._apc = new AppPathController();
-		System.out.println("[AppController] - Start AppController.");
-		System.out.println("[AppController] - AppPath: " + this._apc.getRootPath() + ".");
+		this.writeLog(this, LogMng.INFO, "Start AppController.");
+		this.writeLog(this, LogMng.INFO, "AppPath: " + this._apc.getRootPath() + ".");
 		//this._mc = new MainController(this._apc.getRootPath());
 	}
 	
@@ -33,7 +36,7 @@ public class AppController {
 	}
 
 	public void setDataBase(String database) {
-		System.out.println("[AppController.setDataBase] - Data Base: " + database);
+		this.writeLog(this, LogMng.INFO, "Data Base: " + database);
 		this._mc.useDataBase(database);
 	}
 
@@ -43,10 +46,21 @@ public class AppController {
 		
 		mUserLog = new UserLogModel();
 		
+		this.writeLog(this, LogMng.INFO, userLog.getsUserName());
+		this.writeLog(this, LogMng.INFO, userLog.getsUserPass());
+		
 		if (mUserLog.existsUser(userLog)) {
 			UserSignUp = true;
 		}
 		
 		return UserSignUp;
+	}
+
+	public void writeLog(Object object, String logType, String msg) {
+		if (this._mc == null) {
+			System.out.println(object.getClass().getSimpleName() + " - >> " + msg);
+		} else {
+			this._mc.writeLog(object, logType, msg);
+		}
 	}
 }

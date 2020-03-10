@@ -23,4 +23,8 @@ public class AppSession {
 		
 		return logInOk;
 	}
+	
+	public String getUserName() {
+		return this._userLog.getsUserName();
+	}
 }
