@@ -3,6 +3,7 @@ package com.app.model;
 import java.sql.ResultSet;
 
 import com.app.constant.DataBaseConst;
+import com.app.manager.LogMng;
 import com.app.model.dto.UserDTO;
 
 public class UserModel {
@@ -11,6 +12,8 @@ public class UserModel {
 	}
 
 	public static UserDTO newUser(ResultSet rs) {
+		
+		LogMng log = LogMng.getInstance();
 		
 		UserDTO user = null;
 		String sUserId, sPass, sRoleId, sMail, sCountry;
@@ -24,7 +27,7 @@ public class UserModel {
 			
 			user = new UserDTO(sUserId, sPass, sRoleId, sMail, sCountry);
 		} catch(Exception e) {
-			e.printStackTrace();
+			log.writeError(UserModel.class, e.toString(), e.getStackTrace());
 		}
 		
 		return user;

@@ -1,6 +1,7 @@
 package com.app.model;
 
 
+import com.app.manager.LogMng;
 import com.app.model.dto.UserDTO;
 import com.app.model.dto.UserLogDTO;
 import com.app.persistence.dao.UserLogDAO;
@@ -15,6 +16,8 @@ public class UserLogModel {
 	}
 	
 	public boolean existsUser(UserLogDTO userLog) {
+		LogMng log = LogMng.getInstance();
+		
 		UserDTO user;
 		boolean exists = false;
 		
@@ -22,6 +25,7 @@ public class UserLogModel {
 		
 		if (user != null) {
 			exists = true;
+			log.write(this, LogMng.INFO, "user not null.");
 		}
 		
 		return exists;

@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.Properties;
 
+import com.app.manager.LogMng;
+
 public class ConnectionSqliteDTO extends ConnectionDTO {
 
 	public ConnectionSqliteDTO(Properties properties) {
@@ -22,27 +24,30 @@ public class ConnectionSqliteDTO extends ConnectionDTO {
 	@Override
 	public boolean successfulConnection() {
 		
+		LogMng log = LogMng.getInstance();
+		
 		Connection conn = null;
 		String url = "jdbc:sqlite:" + this.getsUrl() + File.separator + this.getsDataBaseName(); 
 		boolean successful = false;
 		
 		try {
-			Class.forName("org.sqlite.JDBC");
+			Class.forName("org.sqlite.JDBC").newInstance();
 			conn = DriverManager.getConnection(url);
 			
 			successful = true;
 		}
 		catch(Exception e) {
-			System.out.println(url);
+			log.writeError(this, e.toString(), e.getStackTrace());
 			e.printStackTrace();
 		}
 		finally {
 			try {
 				if (conn != null) {
 					conn.close();
+					log.write(this, LogMng.INFO, "conn close");
 				}
 			} catch(Exception e) {
-				
+				log.writeError(this, e.toString(), e.getStackTrace());
 			}
 		}
 		
@@ -61,7 +66,8 @@ public class ConnectionSqliteDTO extends ConnectionDTO {
 			
 			stm = conn.createStatement();
 		} catch(Exception e) {
-			e.printStackTrace();
+			LogMng log = LogMng.getInstance();
+			log.writeError(this, e.toString(), e.getStackTrace());
 		}
 		
 		return stm;

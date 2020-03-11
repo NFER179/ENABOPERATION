@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import com.app.constant.DataBaseConst;
+import com.app.manager.LogMng;
 import com.app.model.UserModel;
 import com.app.model.dto.UserDTO;
 import com.app.model.dto.UserLogDTO;
@@ -21,6 +22,8 @@ public class UserLogImpl implements UserLogDAO {
 	@Override
 	public UserDTO getUser(UserLogDTO userLog) {
 		
+		LogMng log = LogMng.getInstance();
+		
 		Statement stm;
 		String sqlString = "SELECT * FROM " + DataBaseConst.tbl_user.var();
 		ResultSet rs;
@@ -35,7 +38,7 @@ public class UserLogImpl implements UserLogDAO {
 			}
 			
 		} catch(Exception e) {
-			e.printStackTrace();
+			log.writeError(this, e.toString(), e.getStackTrace());
 		}
 			
 		return user;

@@ -30,6 +30,7 @@ public class XmlController {
 			nl = doc.getChildNodes();
 			
 			nlConfiguration = XmlController.getNode(nl, nodeName);
+			//nlConfiguration = XmlController.getNodeTest(nl, nodeName, "");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,6 +60,34 @@ public class XmlController {
 				}
 			}
 		}
+		return lnNodes;
+	}
+	
+	public static List<Node> getNodeTest(NodeList nodeList, String value, String tab) {
+		
+		List<Node> lnNodes = new ArrayList<Node>();
+		List<Node> lnRecursion = new ArrayList<Node>();
+		Node node;
+		int i;
+		
+		for(i = 0; i < nodeList.getLength(); i++) {
+			node = nodeList.item(i);
+			System.out.println(tab + node.getNodeName());
+			
+			if (node.hasChildNodes()) {
+				if (node.getNodeName().equals(value)) {
+					System.out.println(tab + "if (" + value + "): " + node.getNodeName() + ": " + node.getNodeValue());
+					lnNodes.add(node);
+				} else {
+					System.out.println(tab + "else (" + value + "): " + node.getNodeName() + ": " + node.getNodeValue());
+					lnRecursion = XmlController.getNodeTest(node.getChildNodes(), value, tab+"\t"); 
+					if(!lnRecursion.isEmpty()) {
+						lnNodes.addAll(lnRecursion);
+					}
+				}
+			}
+		}
+		System.out.println(tab + lnNodes.size());
 		return lnNodes;
 	}
 }
