@@ -10,6 +10,18 @@
 		<link rel="icon" href="<% out.write("varios/logo.png"); %>" > -->
 		<link rel="stylesheet" href="index.css">
 		<jsp:include page="solution-structure/varios/title.jsp"></jsp:include>
+		<style type="text/css">
+			html, body, div, iframe { 
+				margin:0; 
+				padding:0; 
+				height:100%; 
+			} 
+			iframe { 
+				display:block; 
+				width:100%; 
+				border:none; 
+			} 
+		</style>
 	</head>
 	<body>
 		<form action="LogIn" method="post">
