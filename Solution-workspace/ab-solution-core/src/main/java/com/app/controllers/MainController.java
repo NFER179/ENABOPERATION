@@ -14,7 +14,7 @@ public class MainController {
 	private DataBaseController _dbc;
 	
 	private LogMng _log;
-	
+	private FilesController _jspCtr;
 	private String _sAbsoluteRootPath;
 	
 	private String _sClassName = this.getClass().getSimpleName();
@@ -39,6 +39,9 @@ public class MainController {
 		this._log.setLog(lnLogs);
 		
 		this._log.write(this, LogMng.INFO, "Log load: OK");
+		
+		/* Load file structure. */
+		this._jspCtr = FilesController.getInstance();
 		
 		/* Load properties of data bases */
 		this._log.write(this, LogMng.INFO, "Start read database from " + rootPath + ".");
