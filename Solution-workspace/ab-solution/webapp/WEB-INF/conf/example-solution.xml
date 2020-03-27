@@ -5,6 +5,9 @@
 	<log logType="info">
 		<url>Path</url>
 	</log>
+	<structure>
+		<pathOfStructure>StructPath</pathOfStructure>
+	</structure>
 	<databases>
 		<database active="true">
 			<name>AbSolution sqlite</name>

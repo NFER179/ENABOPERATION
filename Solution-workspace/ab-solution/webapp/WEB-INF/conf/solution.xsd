@@ -2,6 +2,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	
 	<!-- definition of simple elements -->
+	<xsd:element name="pathOfStructure" type="xsd:string" />
 	<xsd:element name="name" type="xsd:string" />
 	<xsd:element name="engine" type="xsd:string" />
 	<xsd:element name="url" type="xsd:string" />
@@ -31,6 +32,12 @@
 		<xsd:attribute name="logType" type="typeOfLog" use="required" />
 	</xsd:complexType>
 	
+	<xsd:complexType name="structureComplexType" >
+		<xsd:sequence>
+			<xsd:element ref="pathOfStructure" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
 	<xsd:complexType name="databasecomplextype">
 		<xsd:sequence>
 			<xsd:element ref="name" />
@@ -51,8 +58,9 @@
 	
 	<xsd:complexType name="solution">
 		<xsd:sequence>
-			<xsd:element name="log" maxOccurs="unbounded" type="logComplexType"/>
-			<xsd:element name="databases" type="databasescomplextype"/>
+			<xsd:element name="log" maxOccurs="unbounded" type="logComplexType" />
+			<xsd:element name="structure" type="structureComplexType" />
+			<xsd:element name="databases" type="databasescomplextype" />
 		</xsd:sequence>
 	</xsd:complexType>
 	
