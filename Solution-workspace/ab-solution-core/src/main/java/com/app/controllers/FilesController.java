@@ -81,7 +81,26 @@ public class FilesController {
 		String sAbsolutePath = "";
 		
 		for(TreeStructure<String> ts: this._ts.getCompleteBranch(fileName)) {
-			sAbsolutePath = sAbsolutePath + File.separator + ts.getElement();
+			if (sAbsolutePath.isEmpty()) {
+				sAbsolutePath = ts.getElement();
+			} else {
+				sAbsolutePath = sAbsolutePath + File.separator + ts.getElement();
+			}
+		}
+		
+		return sAbsolutePath;
+	}
+	
+	/** Get absolute path to element with specific string separator. **/
+	public String getAbsolutPathTo(String fileName, String separator) {
+		String sAbsolutePath = "";
+		
+		for(TreeStructure<String> ts: this._ts.getCompleteBranch(fileName)) {
+			if (sAbsolutePath.isEmpty()) {
+				sAbsolutePath = ts.getElement();
+			} else {
+				sAbsolutePath = sAbsolutePath + separator + ts.getElement();
+			}
 		}
 		
 		return sAbsolutePath;
@@ -119,9 +138,60 @@ public class FilesController {
 		
 		/* Write the path */
 		for(int k = j; k < tsBranchDestination.size(); k++) {
-			path += File.separator + tsBranchDestination.get(k).getElement();
+			if (path.isEmpty()) {
+				path += tsBranchDestination.get(k).getElement();
+			} else {
+				path += File.separator + tsBranchDestination.get(k).getElement();
+			}
 		}
 		
 		return path;
+	}
+	
+	/** Get path from file to file with specific separator. **/
+	public String getPathFromFileToFile(String fromFile, String toFile, String separator) {
+		
+		List<TreeStructure<String>> tsBranchOrigin = this._ts.getCompleteBranch(fromFile);
+		List<TreeStructure<String>> tsBranchDestination = this._ts.getCompleteBranch(toFile);
+		
+		String path = "";
+		
+		int j=0;
+		
+		/* Looking for the folder root */
+		boolean noFoundFolder = true;
+		for (int i = tsBranchOrigin.size() - 2; i >= 0 && noFoundFolder; i-- ) {
+			j = 0;
+			for(TreeStructure< String > tsbd: tsBranchDestination) {
+				j++;
+				if ( tsBranchOrigin.get( i ).getElement().equals( tsbd.getElement() ) ) {
+					noFoundFolder = false;
+					break;
+				}
+			}
+			if (noFoundFolder) {
+				if (path.isEmpty()) {
+					path += "..";
+				} else {
+					path += separator + "..";
+				}
+			}
+		}
+		
+		/* Write the path */
+		for(int k = j; k < tsBranchDestination.size(); k++) {
+			if (path.isEmpty()) {
+				path += tsBranchDestination.get(k).getElement();
+			} else {
+				path += separator + tsBranchDestination.get(k).getElement();
+			}
+		}
+		
+		return path;
+	}
+	
+	/* To Test */
+	public TreeStructure<String> getTS() {
+		return this._ts;
 	}
 }

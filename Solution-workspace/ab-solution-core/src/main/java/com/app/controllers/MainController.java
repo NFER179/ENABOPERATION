@@ -14,7 +14,7 @@ public class MainController {
 	private DataBaseController _dbc;
 	
 	private LogMng _log;
-	private FilesController _jspCtr;
+	private FilesController _fsCtr;
 	private String _sAbsoluteRootPath;
 	
 	private String _sClassName = this.getClass().getSimpleName();
@@ -32,6 +32,7 @@ public class MainController {
 		/* Get nodes configuration to each configuration. */
 		// maybe a list map is better 
 		List<Node> lnLogs = XmlController.getXmlConfiguration(fConfiguration, "log");
+		List<Node> lnStructure = XmlController.getXmlConfiguration(fConfiguration, "structure");
 		List<Node> lnDataBases = XmlController.getXmlConfiguration(fConfiguration, "database");
 		
 		/* Load log configuration. */
@@ -41,7 +42,8 @@ public class MainController {
 		this._log.write(this, LogMng.INFO, "Log load: OK");
 		
 		/* Load file structure. */
-		this._jspCtr = FilesController.getInstance();
+		this._fsCtr = FilesController.getInstance();
+		this._fsCtr.setRootPath(lnStructure);
 		
 		/* Load properties of data bases */
 		this._log.write(this, LogMng.INFO, "Start read database from " + rootPath + ".");
