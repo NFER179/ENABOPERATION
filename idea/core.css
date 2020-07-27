@@ -1,0 +1,263 @@
+body {
+/*
+    font-family: 'Liu Jian Mao Cao', cursive;
+    font-family: 'Arya', sans-serif;
+    */
+    font-family: 'Open Sans', sans-serif;
+    
+    background-color: cornflowerblue;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.div-header {
+    background-color: #2a2a2a;
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+    width: 100%;
+}
+
+.div-header .siderbar-head {
+    position: absolute;
+    text-align: center;
+    margin:  0px;
+    border: 0px;
+    padding: 10px 0 0 0;
+    color: #ffffff;
+    width: 250px;
+    height: 30px;
+    left: 0px;
+}
+
+.div-header .siderbar-head:hover {
+    cursor: pointer;
+    background-color: #333333;
+}
+
+.div-header .siderbar-head header {
+    position: absolute;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    width: 190px;
+}
+
+.div-header .siderbar-head .btn-menu {
+    position: absolute;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    width: 60px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.div-header .siderbar-head .btn-menu .bar1, .bar2, .bar3 {
+    width: 23px;
+    height: 3px;
+    background-color: #fff;
+    padding: 0px;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-4px, 4px);
+    transform: rotate(-45deg) translate(-4px, 4px);
+}
+  
+.change .bar2 {
+    opacity: 0;
+}
+  
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-4px, -4px);
+    transform: rotate(45deg) translate(-4px, -4px);
+}
+
+.div-body {
+    position: absolute;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+    top: 40px;
+    width: 100%;
+    height: 90%;
+    transition: margin-left .5s;
+    box-sizing: border-box;
+}
+
+.div-body .div-sliderbar {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    background-color: #333333;
+    color: #ffffff;
+    width: 0px;
+    height: 100%;
+    overflow: auto;
+    outline: 1px solid #2a2a2a;
+    transition: all 0.5s;
+    box-sizing: border-box;
+}
+
+.div-body .div-sliderbar nav ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.div-body .div-sliderbar nav ul li a {
+    outline: 1px solid #2a2a2a;
+    /*border: 1px solid #2a2a2a;*/
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 4px 0px 4px 0px;
+    /* transition: all 0.15s; */
+}
+
+.div-body .div-sliderbar nav ul li a:hover {
+    background-color: #444;
+    border-left: 3px solid #fff;
+}
+/*
+.div-body .div-sliderbar nav ul li a > i {
+    position: absolute;
+    padding: 0px;
+    margin-left: 5px;
+    width: 20px;
+}
+
+.div-body .div-sliderbar nav ul li a div{
+    position: relative;
+    left: 30px;
+    width: 220px;
+}
+*/
+.div-body .div-sliderbar nav ul li > div {
+    transition: all 0.5s;
+}
+/*
+.div-body .div-sliderbar nav ul li .div-menu-hidden {
+    display: none;
+    /*
+    height: 0%;
+    */
+  /*  transition: all 0.5s;
+}
+
+.div-body .div-sliderbar nav ul li div .li-menu-hidden {
+    display: none;
+    transition: all 0.5s;
+}*/
+
+.div-body .div-sliderbar nav ul .menu-module > a > i {
+    position: absolute;
+    padding: 0px;
+    margin-left: 5px;
+    width: 20px;
+}
+
+.div-body .div-sliderbar nav ul .menu-module > a > div {
+    position: relative;
+    left: 30px;
+    width: 215px;
+}
+
+.div-body .div-sliderbar nav ul .menu-module > a > div > span {
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.div-body .div-sliderbar nav ul .menu-group > a > i {
+    position: absolute;
+    padding: 0px;
+    margin-left: 13px;
+    width: 17px;
+}
+.div-body .div-sliderbar nav ul .menu-group > a > div {
+    position: relative;
+    left: 35px;
+    width: 210px;
+}
+
+.div-body .div-sliderbar nav ul .menu-group > a > div > span {
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+.div-body .div-sliderbar nav ul .menu-link > a > i {
+    position: absolute;
+    padding: 0px;
+    margin-left: 21px;
+    width: 14px;
+}
+
+.div-body .div-sliderbar nav ul .menu-link > a > div {
+    position: relative;
+    left: 40px;
+    width: 205px;
+}
+
+.div-body .div-sliderbar nav ul .menu-link > a > div > span {
+    font-size: 13px;
+    font-family: cursive;
+    text-transform: capitalize;
+}
+
+.div-body .div-main {
+    background-color: rgb(099, 087, 054, 0.7);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    right: 0px;
+    transition: all 0.5s;
+}
+/*
+.div-body .div-main .div-create {
+    background-color: indigo;
+    position: absolute;
+    right: 0px;
+    min-width: 400px;
+    width: 30%;
+    height: 100%;
+}
+
+.div-body .div-main .div-create .form-create .form-create-title {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+
+.div-body .div-main .div-create .form-create .form-body div {
+    padding: 5px 0 5px 0;
+    width: 100%;
+}
+
+.div-body .div-main .div-create .form-create .form-body div .form-div-row-label {
+    padding: 0 7px 0 7px;
+    width: 100%;
+}
+
+.div-body .div-main .div-create .form-create .form-body div label {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.div-body .div-main .div-create .form-create .form-body div input {
+    color: gray;
+    margin: 0 0 0 5%;
+    width: 90%;
+    border: none;
+    border-bottom: 2px solid #605900;
+    height: 32px;
+}
+*/
